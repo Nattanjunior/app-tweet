@@ -1,43 +1,50 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './global.css'
-import { Sparkle } from 'phosphor-react'
 import Tweet from './components/Tweet'
 import Sidebar from './components/Sidebar/Sidebar'
+import Header from './components/Header/Header'
+import Separator from './components/Separator/Separator'
+
+
+// forEach => não tem retorno.
+// map => tem retorno.
+
+const tweets = [
+  'deu certo!',
+  'estou tweetando!!',
+  'teste'
+]
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode >
-<div className='layout'>
+<React.StrictMode >
+  <div className='layout'>
     <Sidebar/>
-  <div className='content'>
-    <main className='timeline'>
-      <div className='timeline-header'>
-        Home
-        <Sparkle/>
-      </div>
 
-        <form className='new-tweet-form'>
-         <label htmlFor="tweet">
-          <img src="https://github.com/Nattanjunior.png" alt="Natan Junior" />
-          <textarea id='tweet' placeholder="What's happening"/>
-           
-           
-          <button type='submit'>tweet</button>         
-          </label>  
-        
-        </form>    
+   <div className='content'>
+      <main className='timeline'>
+       <Header title='Home'/>
 
-        <div className="separator" />
+       <form className='new-tweet-form'>
+        <label htmlFor="tweet">
+         <img src="https://github.com/Nattanjunior.png" alt="Natan Junior" />
+         <textarea id='tweet' placeholder="What's happening"/>        
+        </label>  
+        <button type='submit'>tweet</button> 
+      
+       </form>    
 
-        <Tweet/>
-        <Tweet/>
-        <Tweet/>
-        <Tweet/>
+        <Separator/>
 
-    </main>
+        {tweets.map(tweet=>{
+          return <Tweet content={tweet}/>
+        })}
+
+      </main>
+    </div>
   </div>
-</div>
     
-  </React.StrictMode>,
+</React.StrictMode>,
 )
 
 
