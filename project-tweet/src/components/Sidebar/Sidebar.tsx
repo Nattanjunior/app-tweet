@@ -1,20 +1,24 @@
 import logotwitter from '../../assets/logo-tweet.svg'
 import {Bell,  BookmarkSimple, DotsThreeCircle, Envelope, FileText, Hash, House, User } from 'phosphor-react'
 import './Sidebar.css'
+import { NavLink } from 'react-router-dom'
+
+
+
 export default function Sidebar(){
 return(
     <aside className='sidebar'>
     <img src={logotwitter} alt="" className='logo' />
 
     <nav className='main-navigation'>
-      <a href="" className='active'>
+      <NavLink to="">
         <House weight='fill'/>
         Home
-        </a>
+      </NavLink>
       <a href="">
         <Hash/>
         Explore
-        </a>
+      </a>
       <a href="">
         <Bell/>
         Notifications
@@ -47,3 +51,4 @@ return(
 }
     
     
+// NavLink => já vem com uma class automatica, chamada active.
