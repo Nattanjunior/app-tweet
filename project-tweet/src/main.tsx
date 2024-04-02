@@ -5,6 +5,9 @@ import Tweet from './components/Tweet'
 import Sidebar from './components/Sidebar/Sidebar'
 import Header from './components/Header/Header'
 import Separator from './components/Separator/Separator'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routex'
+
 
 
 // forEach => não tem retorno.
@@ -25,6 +28,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <main className='timeline'>
        <Header title='Home'/>
 
+        <RouterProvider router={router} />
+
        <form className='new-tweet-form'>
         <label htmlFor="tweet">
          <img src="https://github.com/Nattanjunior.png" alt="Natan Junior" />
@@ -36,13 +41,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
         <Separator/>
 
-        {tweets.map(tweet=>{
-          return <Tweet content={tweet}/>
+        {tweets.map(tweet=>{ // propriedade key deve ser usada no primeiro elemento, para identificar os elementos.
+          return <Tweet key={tweet} content={tweet}/>
         })}
-
+ 
       </main>
     </div>
-  </div>
+  </div> 
     
 </React.StrictMode>,
 )
