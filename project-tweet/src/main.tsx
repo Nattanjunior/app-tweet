@@ -1,54 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './global.css'
-import logotwitter from './assets/logo-tweet.svg'
-import {Bell,  BookmarkSimple, DotsThreeCircle, Envelope, FileText, Hash, House, Sparkle, User } from 'phosphor-react'
-
-
+import { Sparkle } from 'phosphor-react'
+import Tweet from './components/Tweet'
+import Sidebar from './components/Sidebar/Sidebar'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode >
 <div className='layout'>
-  <aside className='sidebar'>
-    <img src={logotwitter} alt="" className='logo' />
-
-    <nav className='main-navigation'>
-      <a href="" className='active'>
-        <House weight='fill'/>
-        Home
-        </a>
-      <a href="">
-        <Hash/>
-        Explore
-        </a>
-      <a href="">
-        <Bell/>
-        Notifications
-        </a>
-      <a href="">
-        <Envelope/>
-        Messages
-      </a>
-      <a href="">
-       <BookmarkSimple/>
-        Bookmarks
-        </a>
-      <a href="">
-        <FileText/>
-        Lists
-      </a>
-      <a href="">
-        <User/>
-        Profile
-      </a>
-      <a href="">
-        <DotsThreeCircle/>
-        More
-      </a>
-    </nav>
-
-    <button className='button-tweet'>tweet</button>
-  </aside>
-
+    <Sidebar/>
   <div className='content'>
     <main className='timeline'>
       <div className='timeline-header'>
@@ -62,10 +21,17 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <textarea id='tweet' placeholder="What's happening"/>
            
            
-          <button type='submit'>weet</button>         
+          <button type='submit'>tweet</button>         
           </label>  
         
         </form>    
+
+        <div className="separator" />
+
+        <Tweet/>
+        <Tweet/>
+        <Tweet/>
+        <Tweet/>
 
     </main>
   </div>
