@@ -1,27 +1,54 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useState ,KeyboardEvent} from "react"
 import Header from "../components/Header/Header"
 import Separator from "../components/Separator/Separator"
 import Tweet from "../components/Tweet"
 import './Status.css'
+import { PaperPlaneRight } from "phosphor-react"
 
 
 
+/*
+ *  Fluxo de renderização
+ * 1.toda vez que alteramos o estado de um componente, TODO  componente é recalculado, é reconstruido do 0 novamente.
+ * 2. toda vez que seu componente PAI renderizar. 
+ * 3. toda vez que alguma das suas propriedades mudar.
+//
+  
+ * Algoritmo de reconciliação:
+ 
+ * 1. Criar em memória a nova versão do HTML do componente
+ * 2. Compara essa nova versão com a versão anterior do HTML. retorna =>  (Diff)
+ * 3.Aplicar as operações javascript para alterar somente o necessÁrio do HMTL
 
-const [newanswer, setNewanswer] = useState("")
- const [answers, setAnswers] = useState([
-  'Concordo..',
-  'Olha,faz sentido',
-  'Parabens pelo progresso.'
-])
 
- function createNewTweet(event: FormEvent){
-  event.preventDefault() // prevenindo o comportamento padrão do form 
+*/
 
-  setAnswers([newanswer,...answers]) // tweets está guardando oque eu já tenho enquanto o newtweets, está adicionando um novo elemento no fim do array, ou pode ser no inicio tambem.
-  setNewanswer("")
- }
 
 export default function Status(){
+
+  const [newanswer, setNewanswer] = useState("")
+  const [answers, setAnswers] = useState([
+    'Concordo..',
+    'Olha,faz sentido',
+    'Parabens pelo progresso.'
+  ])
+  
+  function createNewTweet(event: FormEvent){
+    event.preventDefault() // prevenindo o comportamento padrão do form 
+  
+    setAnswers([newanswer,...answers]) 
+    setNewanswer("")
+  }
+
+  function handleHotkeySubmit(event: KeyboardEvent){
+    if(event.key === 'Enter' && event.ctrlKey || event.metaKey){
+      setAnswers([newanswer,...answers]) 
+      setNewanswer("")
+    }
+  }
+
+
+
  return(
  <>
  <main className='status'>
@@ -38,12 +65,16 @@ export default function Status(){
            id='tweet'
            value={newanswer}
            placeholder="Tweet your answer"
+           onKeyDown={handleHotkeySubmit}
            onChange={(event)=>{
             setNewanswer(event.target.value)
            }}
            />        
          </label>  
-         <button type='submit'>Answers</button> 
+         <button type='submit'>
+          <PaperPlaneRight/>
+          <span>Answers</span> 
+         </button> 
        
         </form>    
  
