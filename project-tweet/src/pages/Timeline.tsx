@@ -8,9 +8,7 @@ import './Timeline.css'
 export default function Timline(){
  const [newtweet, setNewtweet] = useState("")
  const [tweets, setTweets] = useState([
-  'deu certo!',
   'estou tweetando!!',
-  'teste'
 ])
 
  function createNewTweet(event: FormEvent){

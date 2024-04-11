@@ -28,9 +28,7 @@ export default function Status(){
 
   const [newanswer, setNewanswer] = useState("")
   const [answers, setAnswers] = useState([
-    'Concordo..',
-    'Olha,faz sentido',
-    'Parabens pelo progresso.'
+    "Lorem ipsum dolor sit amet consectetur",
   ])
   
   function createNewTweet(event: FormEvent){
